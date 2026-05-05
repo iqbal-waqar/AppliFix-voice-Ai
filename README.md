@@ -131,8 +131,6 @@ All tool calls route through a single webhook endpoint: `POST /vapi/webhook`
 - [ngrok](https://ngrok.com) account (free)
 - [VAPI](https://vapi.ai) account (free $10 credit)
 - [Twilio](https://twilio.com) account (for phone number)
-- [Deepgram](https://deepgram.com) account (free $200 credit)
-- [Groq](https://groq.com) account (free tier)
 
 ### 1. Clone & Install
 
@@ -160,14 +158,6 @@ DATABASE_URL=postgresql://postgres:postgres@localhost:5432/voice_ai_db
 VAPI_API_KEY=your_vapi_api_key
 VAPI_PHONE_NUMBER_ID=your_phone_number_id
 VAPI_ASSISTANT_ID=your_assistant_id
-
-# Deepgram (one key for both STT and TTS)
-DEEPGRAM_API_KEY=your_deepgram_key
-DEEPGRAM_TTS_VOICE=aura-asteria-en
-
-# Groq LLM
-GROQ_API_KEY=your_groq_key
-GROQ_MODEL=llama-3.3-70b-versatile
 
 # App
 BACKEND_URL=https://your-ngrok-url.ngrok-free.dev
@@ -219,14 +209,6 @@ ngrok http 8000
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
 | `POST` | `/vapi/webhook` | Receives all VAPI events and tool calls |
-| `GET` | `/vapi/dashboard` | Returns all call logs for the dashboard |
-| `GET` | `/vapi/live` | Returns currently active calls |
-| `GET` | `/vapi/sync` | Syncs call history from VAPI API |
-| `PATCH` | `/vapi/calls/{id}/status` | Update call status (resolve/complete) |
-| `GET` | `/scheduling/appointments` | List all appointments |
-| `GET` | `/scheduling/technicians` | List all technicians with specialties and ZIP codes |
-| `POST` | `/scheduling/appointments/{id}/complete` | Mark appointment as completed |
-| `PATCH` | `/scheduling/appointments/{id}/cancel` | Cancel an appointment |
 | `GET` | `/health` | Health check |
 
 ---
